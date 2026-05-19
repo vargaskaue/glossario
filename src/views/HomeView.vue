@@ -1,70 +1,81 @@
 <template>
-  <main class="container">
-    <h1>Glossário: Concepções de Língua e Texto</h1>
-    
-    <input 
-      v-model="busca"
-      type="text" 
-      placeholder="Buscar termo (ex: Letramento)..." 
-      class="search-bar"
-    />
-
-    <div class="alfabeto">
-      <button 
-        v-for="letra in alfabeto" 
-        :key="letra"
-        @click="letraAtiva = letraAtiva === letra ? '' : letra"
-        :class="{ ativo: letraAtiva === letra }"
-      >
-        {{ letra }}
-      </button>
-    </div>
-
-    <div class="grid">
-      <div v-for="termo in termosFiltrados" :key="termo.id" class="card">
-        <h2>{{ termo.titulo }}</h2>
-        <span class="autor">Por: {{ termo.autor }}</span>
-        <p>{{ termo.resumo }}</p>
+  <div class="page-wrapper">
+    <header class="site-header">
+      <div class="top-bar">
+        <div class="container top-bar-content">
+          <span class="institution">UFSM • Programa de Pós-Graduação em Letras</span>
+          <span class="discipline">Disciplina: Concepções de Língua e Texto</span>
+        </div>
       </div>
       
-      <div v-if="termosFiltrados.length === 0" class="vazio">
-        Nenhum verbete encontrado para esta busca.
+      <div class="hero-section container">
+        <h1>Glossário</h1>
+        <h2 class="subtitle">Concepções de Língua e Texto</h2>
+        <p class="intro-text">
+          Um repositório de termos e conceitos fundamentais desenvolvidos a partir das pesquisas dos mestrandos e doutorandos do programa.
+        </p>
       </div>
-    </div>
-  </main>
+    </header>
+
+    <main class="container main-content">
+      <input 
+        v-model="busca"
+        type="text" 
+        placeholder="Buscar termo (ex: Letramento)..." 
+        class="search-bar"
+      />
+
+      <div class="alfabeto">
+        <button 
+          v-for="letra in alfabeto" 
+          :key="letra"
+          @click="letraAtiva = letraAtiva === letra ? '' : letra"
+          :class="{ ativo: letraAtiva === letra }"
+        >
+          {{ letra }}
+        </button>
+      </div>
+
+      <div class="grid">
+        <div v-for="termo in termosFiltrados" :key="termo.id" class="card">
+          <h2>{{ termo.titulo }}</h2>
+          <span class="autor">Por: {{ termo.autor }}</span>
+          <p>{{ termo.resumo }}</p>
+        </div>
+        
+        <div v-if="termosFiltrados.length === 0" class="vazio">
+          Nenhum verbete encontrado para esta busca.
+        </div>
+      </div>
+    </main>
+  </div>
 </template>
 
 <script setup>
 import { ref, computed } from 'vue'
 
-// Controles da interface
 const busca = ref('')
 const letraAtiva = ref('')
 const alfabeto = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
 
-// 1. DADOS NA FORÇA BRUTA (Mock Data)
-// Inseri alguns conceitos da área de Letras para teste
 const verbetes = ref([
-  { id: 1, titulo: 'Alfabetização', autor: 'Pesquisador A', resumo: 'Processo de aquisição da tecnologia da escrita e da leitura...' },
-  { id: 2, titulo: 'Análise do Discurso', autor: 'Pesquisador B', resumo: 'Campo da linguística que estuda a linguagem em uso, considerando o contexto ideológico...' },
-  { id: 3, titulo: 'Gênero Textual', autor: 'Pesquisador C', resumo: 'Formas de linguagem que exercem funções sociais específicas nas interações comunicativas...' },
-  { id: 4, titulo: 'Letramento', autor: 'Pesquisador D', resumo: 'Estado ou condição de quem não apenas sabe ler e escrever, mas cultiva e exerce as práticas sociais...' }
+  { id: 1, titulo: 'Alfabetização', autor: 'Pesquisador A', resumo: 'Processo de aquisição da tecnologia da escrita e da leitura, compreendendo o domínio do código alfabético e ortográfico.' },
+  { id: 2, titulo: 'Análise do Discurso', autor: 'Pesquisador B', resumo: 'Campo da linguística que estuda a linguagem em uso, considerando o contexto histórico e ideológico em que os textos são produzidos.' },
+  { id: 3, titulo: 'Gênero Textual', autor: 'Pesquisador C', resumo: 'Formas de linguagem que exercem funções sociais específicas nas interações comunicativas, caracterizadas por propriedades sócio-históricas.' },
+  { id: 4, titulo: 'Letramento', autor: 'Pesquisador D', resumo: 'Estado ou condição de quem não apenas sabe ler e escrever, mas cultiva e exerce as práticas sociais que usam a escrita.' }
 ])
 
-// 2. LÓGICA DE FILTRAGEM (Simulando a busca que o Supabase faria)
 const termosFiltrados = computed(() => {
   let resultado = verbetes.value
 
-  // Se o usuário digitou algo na barra de busca
   if (busca.value) {
-    letraAtiva.value = '' // Limpa o botão do alfabeto
+    letraAtiva.value = ''
     const termoBuscado = busca.value.toLowerCase()
     resultado = resultado.filter(t => 
       t.titulo.toLowerCase().includes(termoBuscado) || 
       t.resumo.toLowerCase().includes(termoBuscado)
     )
   } 
-  // Se o usuário clicou em uma letra do alfabeto
   else if (letraAtiva.value) {
     resultado = resultado.filter(t => t.titulo.startsWith(letraAtiva.value))
   }
@@ -76,73 +87,131 @@ const termosFiltrados = computed(() => {
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,700;1,400&family=Inter:wght@400;500;600&display=swap');
 
-.container { 
-  max-width: 850px; 
-  margin: 50px auto; 
-  font-family: 'Inter', sans-serif; 
-  padding: 0 24px; 
-  color: #2d3748; 
+.page-wrapper {
+  font-family: 'Inter', sans-serif;
+  color: #2d3748;
+  background-color: #f8fafc;
+  min-height: 100vh;
+  padding-bottom: 60px;
 }
 
-h1 { 
-  color: #2b6cb0; 
-  margin-bottom: 24px; 
-  font-weight: 600; 
-  font-size: 2.2rem; 
-  border-bottom: 2px solid #e2e8f0; 
-  padding-bottom: 12px; 
+/* Container unificado para alinhar tudo no centro */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px;
 }
 
+/* --- ESTILOS DO CABEÇALHO --- */
+.site-header {
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+.top-bar {
+  background-color: #1e3a8a; /* Azul institucional mais escuro */
+  color: #e0e7ff;
+  padding: 8px 0;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.top-bar-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.hero-section {
+  padding: 50px 24px;
+  text-align: center;
+}
+
+.hero-section h1 {
+  font-family: 'Lora', serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #1e3a8a;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 15px 0 25px 0;
+}
+
+.intro-text {
+  max-width: 700px;
+  margin: 0 auto;
+  color: #475569;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* --- ESTILOS DO CONTEÚDO PRINCIPAL (Busca e Cards) --- */
 .search-bar { 
   width: 100%; 
-  padding: 14px 16px; 
+  padding: 16px 20px; 
   margin-bottom: 24px; 
   font-size: 1.1rem; 
-  border: 1px solid #cbd5e0; 
-  border-radius: 8px; 
-  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+  border: 2px solid #e2e8f0; 
+  border-radius: 12px; 
+  box-shadow: 0 4px 6px rgba(0,0,0,0.02);
   transition: all 0.2s ease;
   font-family: inherit;
+  background-color: #ffffff;
 }
 
 .search-bar:focus {
   outline: none;
-  border-color: #3182ce;
-  box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.2);
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
 }
 
 .alfabeto { 
   display: flex; 
   flex-wrap: wrap; 
+  justify-content: center;
   gap: 8px; 
-  margin-bottom: 40px; 
+  margin-bottom: 50px; 
 }
 
 .alfabeto button { 
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #e2e8f0; 
-  background: #f7fafc; 
+  border: 1px solid #cbd5e0; 
+  background: #ffffff; 
   cursor: pointer; 
-  border-radius: 6px; 
-  font-weight: 500;
-  color: #4a5568;
+  border-radius: 8px; 
+  font-weight: 600;
+  color: #475569;
   transition: all 0.2s ease; 
 }
 
 .alfabeto button:hover { 
-  background: #edf2f7; 
-  border-color: #cbd5e0;
+  background: #f1f5f9; 
+  border-color: #94a3b8;
+  transform: translateY(-1px);
 }
 
 .alfabeto button.ativo { 
-  background: #2b6cb0; 
+  background: #1e3a8a; 
   color: white; 
-  border-color: #2b6cb0; 
-  box-shadow: 0 2px 4px rgba(43, 108, 176, 0.3);
+  border-color: #1e3a8a; 
+  box-shadow: 0 4px 10px rgba(30, 58, 138, 0.3);
 }
 
 .grid { 
@@ -153,49 +222,52 @@ h1 {
 
 .card { 
   border: 1px solid #e2e8f0; 
-  padding: 24px; 
-  border-radius: 10px; 
+  padding: 30px; 
+  border-radius: 16px; 
   background: #ffffff; 
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); 
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02); 
+  transition: all 0.2s ease;
 }
 
 .card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 20px -8px rgba(0, 0, 0, 0.08);
+  border-color: #cbd5e0;
 }
 
 .card h2 { 
-  margin: 0 0 8px 0; 
-  color: #2c5282; 
+  margin: 0 0 12px 0; 
+  color: #1e3a8a; 
   font-family: 'Lora', serif;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
 }
 
 .autor { 
   display: inline-block;
   font-size: 0.85em; 
-  color: #4a5568; 
-  background-color: #edf2f7;
-  padding: 4px 10px;
+  color: #3b82f6; 
+  background-color: #eff6ff;
+  padding: 6px 12px;
   border-radius: 20px;
-  margin-bottom: 12px;
-  font-weight: 500;
+  margin-bottom: 16px;
+  font-weight: 600;
+  border: 1px solid #bfdbfe;
 }
 
 .card p { 
-  margin-top: 8px; 
-  color: #4a5568; 
-  line-height: 1.6; 
+  margin: 0; 
+  color: #475569; 
+  line-height: 1.7; 
   font-size: 1.05rem;
 }
 
 .vazio { 
   text-align: center; 
-  color: #718096; 
-  background: #f7fafc;
-  padding: 40px;
-  border-radius: 8px;
-  border: 1px dashed #cbd5e0;
+  color: #64748b; 
+  background: #ffffff;
+  padding: 50px;
+  border-radius: 12px;
+  border: 2px dashed #cbd5e0;
+  font-size: 1.1rem;
 }
 </style>
