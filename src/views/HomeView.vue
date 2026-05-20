@@ -1,25 +1,15 @@
 <template>
   <div class="editorial-wrapper">
     <header class="editorial-header">
-      
-      <div class="logos-section">
-        <div class="header-container instituicao-logos">
-          <img 
-            src="https://www.ufsm.br/app/uploads/2019/12/D%C3%ADstico.png" 
-            alt="Brasão da UFSM" 
-            class="img-ufsm"
-          >
-          <span class="divisor-logos"></span>
-          <img 
-            src="https://www.ufsm.br/app/uploads/sites/758/2024/08/logo-ppgl.jpg" 
-            alt="Logo do Programa de Pós-Graduação em Letras" 
-            class="img-ppgl"
-          >
-        </div>
-      </div>
-
       <div class="hero-section">
         <div class="header-container">
+          
+          <div class="instituicao-texto-topo">
+            <span>Universidade Federal de Santa Maria</span>
+            <span class="divisor-vertical"></span>
+            <span>Programa de Pós-Graduação em Letras</span>
+          </div>
+
           <div class="logo-box">
             <h1 class="logo-main">Glossário</h1>
             <div class="logo-separator">
@@ -29,6 +19,7 @@
             <h2 class="logo-discipline">Concepções de Língua e Texto</h2>
             <p class="logo-code">PPGLET899</p>
           </div>
+
         </div>
       </div>
     </header>
@@ -168,8 +159,15 @@ onMounted(() => {
   flex-direction: column;
 }
 
+/* --- CABEÇALHO EDITORIAL INTEGRADO --- */
 .editorial-header {
   margin-bottom: 50px;
+}
+
+.hero-section {
+  background-color: #0f4c5c;
+  padding: 50px 24px 75px;
+  border-bottom: 6px solid #1a748a;
 }
 
 .header-container {
@@ -178,41 +176,26 @@ onMounted(() => {
   text-align: center;
 }
 
-.logos-section {
-  background-color: #ffffff;
-  padding: 30px 24px;
-  border-bottom: 1px solid #e2e8f0;
-}
-
-.instituicao-logos {
+/* Identificação institucional minimalista em formato de texto */
+.instituicao-texto-topo {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 40px;
+  gap: 20px;
+  margin-bottom: 55px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #94c1cc;
+  font-weight: 500;
+  opacity: 0.8;
 }
 
-.img-ufsm {
-  height: 95px;
-  width: auto;
-  object-fit: contain;
-}
-
-.img-ppgl {
-  height: 85px;
-  width: auto;
-  object-fit: contain;
-}
-
-.divisor-logos {
-  height: 60px;
+.divisor-vertical {
+  height: 12px;
   width: 1px;
-  background-color: #e2e8f0;
-}
-
-.hero-section {
-  background-color: #0f4c5c;
-  padding: 65px 24px 75px;
-  border-bottom: 6px solid #1a748a;
+  background-color: rgba(148, 193, 204, 0.4);
 }
 
 .logo-box {
@@ -273,6 +256,7 @@ onMounted(() => {
   color: #94c1cc;
 }
 
+/* --- CONTEÚDO PRINCIPAL --- */
 .editorial-main {
   max-width: 800px;
   width: 100%;
@@ -282,6 +266,7 @@ onMounted(() => {
   flex: 1;
 }
 
+/* --- BUSCA --- */
 .search-wrapper {
   position: relative;
   margin-bottom: 40px;
@@ -316,6 +301,7 @@ onMounted(() => {
   height: 2px;
 }
 
+/* --- ALFABETO --- */
 .editorial-alphabet {
   display: flex;
   flex-wrap: wrap;
@@ -345,6 +331,7 @@ onMounted(() => {
   border-bottom: 2px solid #0f4c5c;
 }
 
+/* --- GRID DE VERBETES --- */
 .editorial-grid {
   display: flex;
   flex-direction: column;
@@ -442,6 +429,7 @@ onMounted(() => {
   padding: 40px 0;
 }
 
+/* --- RODAPÉ --- */
 .editorial-footer {
   background-color: #0f4c5c;
   padding: 40px 24px;
@@ -515,6 +503,14 @@ onMounted(() => {
   .footer-container {
     align-items: center;
     text-align: center;
+  }
+  .instituicao-texto-topo {
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 35px;
+  }
+  .divisor-vertical {
+    display: none;
   }
 }
 </style>
