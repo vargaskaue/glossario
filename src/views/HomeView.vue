@@ -37,6 +37,13 @@
 
       <div class="editorial-alphabet">
         <button 
+          @click="letraAtiva = ''"
+          :class="['letter-btn', 'todos-btn', { active: letraAtiva === '' && !busca }]"
+        >
+          Todos
+        </button>
+        
+        <button 
           v-for="letra in alfabeto" 
           :key="letra"
           @click="letraAtiva = letraAtiva === letra ? '' : letra"
