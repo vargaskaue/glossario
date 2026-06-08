@@ -1,7 +1,7 @@
 ---
 titulo: Autopoiese
-autor: Kauê Sitó
-resumo: Uma análise sobre as vertentes estruturalistas e enunciativas na história da linguística.
+autor: SITÓ, Kauê; VIRAGO, Carine; ROSA, Ana Paula; PEREIRA, Daniela
+resumo: Propriedade de sistemas vivos de produzirem e regenerarem a si mesmos continuamente a partir de suas próprias estruturas e história de interações.
 
 ---
 
@@ -13,4 +13,9 @@ resumo: Uma análise sobre as vertentes estruturalistas e enunciativas na histó
 
 ## Referências Bibliográficas
 
-BORGES, Elaine; PAIVA, Vera Lúcia. Por uma abordagem complexa de ensino de línguas. Revista Linguagem & Ensino, v. 14, n. 2, p. 337-356, 13 mar. 2019.
+BORGES, E.; PAIVA, V. L.. Por uma abordagem complexa de ensino de línguas. Revista Linguagem & Ensino, v. 14, n. 2, p. 337-356, 13 mar. 2019.
+
+
+## Conteúdos Relacionados
+
+[[complexidade]] [[sistema adaptativo complexo]]

@@ -1,7 +1,7 @@
 ---
 titulo: Ambiguidade e Ambivalência
-autor: Kauê Sitó
-resumo: Uma análise sobre as vertentes estruturalistas e enunciativas na história da linguística.
+autor: SITÓ, Kauê; VIRAGO, Carine; ROSA, Ana Paula; PEREIRA, Daniela
+resumo: Características intrínsecas aos sistemas complexos que emergem de seu estado de vir-a-ser e de sua constante transformação temporal.
 
 ---
 

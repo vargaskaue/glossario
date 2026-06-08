@@ -1,7 +1,7 @@
 ---
 titulo: Reversibilidade
-autor: Kauê Sitó
-resumo: Uma análise sobre as vertentes estruturalistas e enunciativas na história da linguística.
+autor: SITÓ, Kauê; VIRAGO, Carine; ROSA, Ana Paula; PEREIRA, Daniela
+resumo: Propriedade cognitiva de realizar uma operação mental e compreender a possibilidade de retornar ao estado original, anulando ou compensando a transformação.
 
 ---
 
@@ -15,4 +15,12 @@ resumo: Uma análise sobre as vertentes estruturalistas e enunciativas na histó
 
 A reversibilidade é o que permite ao conhecimento deixar de ser prisioneiro da percepção imediata (que é irreversível e estática) para se tornar lógico.
 
-# References
+## Referências Bibliográficas
+
+BORGES, E.; PAIVA, V. L.. Por uma abordagem complexa de ensino de línguas. Revista Linguagem & Ensino, v. 14, n. 2, p. 337-356, 13 mar. 2019.
+
+DEMO, P. Complexidade e aprendizagem: a dinâmica não linear do conhecimento. São Paulo: Atlas, 2008.
+
+## Conteúdos Relacionados
+
+[[complexidade]] [[sistema adaptativo complexo]]

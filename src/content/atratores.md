@@ -1,7 +1,7 @@
 ---
 titulo: Atratores
-autor: Kauê Sitó
-resumo: Uma análise sobre as vertentes estruturalistas e enunciativas na história da linguística.
+autor: SITÓ, Kauê; VIRAGO, Carine; ROSA, Ana Paula; PEREIRA, Daniela
+resumo: Regiões ou modos de comportamento para as quais um sistema dinâmico tende a se mover, atuando como forças estabilizadoras ou indutoras de mudança.
 
 ---
 
