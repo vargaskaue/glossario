@@ -549,17 +549,70 @@ onMounted(() => {
 }
 
 @media (max-width: 640px) {
-  .footer-container {
-    align-items: center;
-    text-align: center;
-  }
+  /* Arruma o topo e os textos institucionais */
   .instituicao-texto-topo {
     flex-direction: column;
-    gap: 8px;
-    margin-bottom: 35px;
+    gap: 5px;
+    margin-bottom: 30px;
+    font-size: 0.7rem;
+    text-align: center;
   }
   .divisor-vertical {
     display: none;
+  }
+  
+  /* Encolhe o cabeçalho gigante */
+  .hero-section {
+    padding: 40px 20px 40px;
+  }
+
+  /* Impede a palavra Glossário de estourar a tela */
+  .logo-main {
+    font-size: 3.5rem; 
+  }
+
+  .logo-discipline {
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  /* Blinda a largura da página principal */
+  .editorial-main {
+    padding: 0 15px;
+    margin-top: 30px;
+    width: 100%;
+    box-sizing: border-box; /* O segredo para não vazar a lateral */
+  }
+
+  /* Ajusta os botões e a barra de busca */
+  .editorial-search {
+    font-size: 1.25rem;
+  }
+
+  .letter-btn {
+    font-size: 0.95rem;
+    padding: 6px 8px;
+  }
+
+  /* Compacta os cards de verbetes */
+  .editorial-card {
+    padding: 20px 15px;
+  }
+
+  .card-title {
+    font-size: 1.6rem;
+  }
+
+  .card-excerpt {
+    font-size: 0.95rem;
+  }
+
+  /* Centraliza o rodapé */
+  .footer-container {
+    align-items: center;
+    text-align: center;
   }
 }
 </style>

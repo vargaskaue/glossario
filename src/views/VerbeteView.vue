@@ -43,7 +43,7 @@
         </div>
         <div class="footer-credits">
           <p class="developer">Desenvolvido por <a href="https://integra.ifsul.edu.br/p/kaue-vargas-sito" target="_blank" rel="noopener" class="integra-link">Kauê Sitó</a></p>
-          <p class="license">Produto licenciado sob <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pt-br" target="_blank" rel="noopener">Creative Commons CC BY-NC-SA 4.0</a></p>
+          <p class="license">Produto licensed sob <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pt-br" target="_blank" rel="noopener">Creative Commons CC BY-NC-SA 4.0</a></p>
         </div>
       </div>
     </footer>
@@ -80,7 +80,7 @@ const parseMarkdown = (rawContent, id) => {
       const corpo = parts.slice(2).join('---').trim()
       meta.conteudo = corpo
 
-      // NOVO: Algoritmo invisível que lê os links para montar o grafo
+      // Algoritmo invisível que mapeia os nós do grafo
       const regexWikiLink = /\[\[(.*?)\]\]/g
       let match
       const linksEncontrados = []
@@ -104,7 +104,8 @@ const carregarVerbeteLocal = () => {
   const caminhoAlvo = `../content/${fileId}.md`
 
   if (arquivos[caminhoAlvo]) {
-    const conteudoBruto = arquivos[caminhoAlvo].default
+    // CORRIGIDO AQUI: arquivos com "qu" em vez de "ch"
+    const conteudoBruto = arquivos[caminhoAlvo].default 
     verbete.value = parseMarkdown(conteudoBruto, fileId)
   } else {
     verbete.value = {
@@ -116,14 +117,12 @@ const carregarVerbeteLocal = () => {
     }
   }
   
-  // Aguarda o Vue renderizar para interceptar links e montar o grafo
   nextTick(() => {
     configurarCliquesDosLinks()
     montarGrafoLocal()
   })
 }
 
-// Função exata de slug da sua versão para os links do grafo funcionarem
 const gerarSlug = (texto) => {
   return texto
     .toLowerCase()
@@ -141,7 +140,13 @@ const montarGrafoLocal = () => {
   const rotuloCentral = verbete.value.titulo
 
   const nodes = [
-    { id: idCentral, label: rotuloCentral, font: { bold: true, color: '#ffffff', size: 14 }, color: { background: '#0f4c5c', border: '#0a323d' } }
+    { 
+      id: idCentral, 
+      label: rotuloCentral.toUpperCase(), 
+      size: 24,
+      color: { background: '#0f4c5c', border: '#1a748a' },
+      font: { color: '#0f4c5c', size: 13, face: 'Inter', vadjust: 10, bold: '600' }
+    }
   ]
   const edges = []
 
@@ -151,25 +156,26 @@ const montarGrafoLocal = () => {
     nodes.push({
       id: slugVizinho,
       label: link,
-      color: { background: '#e2ecee', border: '#94c1cc' },
-      font: { color: '#1c1c1c', size: 12 }
+      size: 12,
+      color: { background: '#94c1cc', border: '#94c1cc' },
+      font: { color: '#555', size: 11, face: 'Inter', vadjust: 6 }
     })
-    edges.push({ from: idCentral, to: slugVizinho, color: { color: '#94c1cc', highlight: '#0f4c5c' }, width: 2 })
+    edges.push({ from: idCentral, to: slugVizinho, color: { color: '#d1e2e5', highlight: '#0f4c5c' }, width: 1, length: 140 })
   })
 
-  const data = { nodes, edges }
-
   const options = {
-    nodes: { shape: 'box', margin: 10, borderRadius: 6, borderWidth: 2, chosen: true },
-    edges: { arrows: { to: { enabled: false } }, smooth: { type: 'continuous' } },
+    nodes: { shape: 'dot', borderWidth: 2, shadow: { enabled: true, color: 'rgba(0,0,0,0.05)', size: 5, x: 2, y: 2 } },
+    edges: { arrows: { to: { enabled: false } }, smooth: { type: 'cubicBezier', forceDirection: 'none', roundness: 0.5 } },
     physics: {
       enabled: true,
-      barnesHut: { gravitationalConstant: -2000, centralGravity: 0.3, springLength: 95, springConstant: 0.04 }
+      solver: 'forceAtlas2Based',
+      forceAtlas2Based: { gravitationalConstant: -50, springLength: 100, springConstant: 0.01, damping: 0.4 },
+      stabilization: { iterations: 100 }
     },
-    interaction: { hover: true, zoomView: false, dragView: true }
+    interaction: { hover: true, zoomView: true, dragView: true }
   }
 
-  instanciaNetwork = new Network(containerGrafo.value, data, options)
+  instanciaNetwork = new Network(containerGrafo.value, { nodes, edges }, options)
 
   instanciaNetwork.on('click', (params) => {
     if (params.nodes.length > 0) {
@@ -181,50 +187,36 @@ const montarGrafoLocal = () => {
   })
 }
 
-// Junta a inteligência do Marked (gerar HTML) com a conversão de [[WikiLinks]]
 const conteudoProcessado = computed(() => {
   if (!verbete.value || !verbete.value.conteudo) return ''
-
   let texto = verbete.value.conteudo
 
-  // Regex para capturar [[slug]] ou [[slug|Texto Customizado]]
   const regexWikiLink = /\[\[(.*?)\]\]/g
   texto = texto.replace(regexWikiLink, (match, conteudoInterno) => {
     const partes = conteudoInterno.split('|')
     const linkAlvo = partes[0].trim()
     const textoExibido = partes[1] ? partes[1].trim() : linkAlvo
-    const slug = gerarSlug(linkAlvo) // Usa a função unificada
-
-    // Injeta uma tag 'a' com um atributo customizado para interceptarmos no Vue
+    const slug = gerarSlug(linkAlvo)
     return `<a href="#/verbete/${slug}" data-wikilink="${slug}" class="wikilink-interno">${textoExibido}</a>`
   })
 
-  // Retorna o Markdown convertido em HTML estruturado
   return marked.parse(texto)
 })
 
-// Função para fazer o Vue Router gerenciar o clique do link gerado dinamicamente
 const configurarCliquesDosLinks = () => {
   const container = document.querySelector('.html-markdown')
   if (!container) return
-
   const links = container.querySelectorAll('a[data-wikilink]')
   links.forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault()
-      const slug = link.getAttribute('data-wikilink')
-      router.push(`/verbete/${slug}`)
+      router.push(`/verbete/${link.getAttribute('data-wikilink')}`)
     })
   })
 }
 
-watch(() => route.params.id, () => {
-  carregarVerbeteLocal()
-})
-
-onMounted(() => {
-  carregarVerbeteLocal()
-})
+watch(() => route.params.id, () => carregarVerbeteLocal())
+onMounted(() => carregarVerbeteLocal())
 </script>
 
 <style scoped>
@@ -240,7 +232,7 @@ onMounted(() => {
 }
 
 .header-container {
-  max-width: 1200px; /* Alargado para caber o grafo */
+  max-width: 1200px;
   margin: 0 auto;
   width: 100%;
 }
@@ -284,7 +276,7 @@ onMounted(() => {
 }
 
 .editorial-main {
-  max-width: 1250px; /* Alargado para caber o grafo */
+  max-width: 1250px;
   width: 100%;
   margin: 40px auto 80px;
   padding: 0 24px;
@@ -333,7 +325,6 @@ onMounted(() => {
   color: #1c1c1c;
 }
 
-/* --- RE-ESTILIZAÇÃO DA FONTE --- */
 .html-markdown {
   font-family: 'Lora', serif;
   font-size: 1.25rem;
@@ -358,7 +349,6 @@ onMounted(() => {
 :deep(.html-markdown h1) { font-size: 2rem; }
 :deep(.html-markdown h2) { font-size: 1.6rem; border-bottom: 1px solid #f0f0f0; padding-bottom: 8px; }
 :deep(.html-markdown h3) { font-size: 1.3rem; }
-
 :deep(.html-markdown p) { margin-bottom: 24px; }
 :deep(.html-markdown ul), :deep(.html-markdown ol) { margin-bottom: 24px; padding-left: 24px; }
 :deep(.html-markdown li) { margin-bottom: 8px; }
@@ -414,9 +404,9 @@ onMounted(() => {
 .conteiner-canvas-grafo {
   height: 380px;
   width: 100%;
-  border-radius: 6px;
   background-color: #fcfcfb;
   border: 1px dashed #cbd5e0;
+  border-radius: 6px;
 }
 
 .loading {
@@ -427,27 +417,150 @@ onMounted(() => {
   color: #888;
 }
 
-/* --- RODAPÉ --- */
-.editorial-footer { background-color: #0f4c5c; padding: 40px 24px; margin-top: auto; }
-.footer-container { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: flex-end; gap: 15px; text-align: right; }
-.footer-social { display: flex; gap: 15px; font-size: 1.6rem; }
-.footer-social a { color: #94c1cc; transition: 0.2s; }
-.footer-social a:hover { color: #ffffff; transform: translateY(-2px); }
-.footer-credits { font-family: 'Inter', sans-serif; font-size: 0.9rem; color: #d1e8ed; }
-.footer-credits p { margin: 5px 0; }
-.integra-link { color: #ffffff; font-weight: 600; text-decoration: none; border-bottom: 1px dotted rgba(255, 255, 255, 0.4); transition: border-color 0.2s ease; }
-.integra-link:hover { border-bottom-color: #ffffff; }
-.license { font-size: 0.8rem; color: #94c1cc; }
-.license a { color: #94c1cc; text-decoration: underline; font-weight: 500; }
-.license a:hover { color: #ffffff; }
+/* --- RODAPÉ ORIGINAL INTEGRADO --- */
+.editorial-footer { 
+  background-color: #0f4c5c; 
+  padding: 40px 24px; 
+  margin-top: auto; 
+}
 
-@media (max-width: 960px) {
-  .layout-layout-grid { grid-template-columns: 1fr; }
-  .sidebar-grafo { position: static; }
+.footer-container { 
+  max-width: 1200px; 
+  margin: 0 auto; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: flex-end; 
+  gap: 15px; 
+  text-align: right; 
+}
+
+.footer-social { 
+  display: flex; 
+  gap: 15px; 
+  font-size: 1.6rem; 
+}
+
+.footer-social a { 
+  color: #94c1cc; 
+  transition: 0.2s; 
+}
+
+.footer-social a:hover { 
+  color: #ffffff; 
+  transform: translateY(-2px); 
+}
+
+.footer-credits { 
+  font-family: 'Inter', sans-serif; 
+  font-size: 0.9rem; 
+  color: #d1e8ed; 
+}
+
+.footer-credits p { 
+  margin: 5px 0; 
+}
+
+.integra-link { 
+  color: #ffffff; 
+  font-weight: 600; 
+  text-decoration: none; 
+  border-bottom: 1px dotted rgba(255, 255, 255, 0.4); 
+  transition: border-color 0.2s ease; 
+}
+
+.integra-link:hover { 
+  border-bottom-color: #ffffff; 
+}
+
+.license { 
+  font-size: 0.8rem; 
+  color: #94c1cc; 
+}
+
+.license a { 
+  color: #94c1cc; 
+  text-decoration: underline; 
+  font-weight: 500; 
+}
+
+.license a:hover { 
+  color: #ffffff; 
+}
+
+/* --- REGRAS DE RESPONSIVIDADE BLINDADAS --- */
+@media (max-width: 1100px) {
+  .layout-layout-grid { 
+    display: flex;
+    flex-direction: column;
+    gap: 40px; 
+  }
+  .sidebar-grafo { 
+    position: static; 
+    width: 100%;
+  }
+  .verbete-leitura { 
+    width: 100%; 
+    max-width: 100%;
+  }
 }
 
 @media (max-width: 640px) {
-  .footer-container { align-items: center; text-align: center; }
-  .verbete-leitura { padding: 30px 24px; }
+  .editorial-main { 
+    padding: 0 15px; 
+    margin: 20px auto 40px; 
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .verbete-leitura { 
+    padding: 30px 20px; 
+    width: 100%;
+    box-sizing: border-box; 
+    overflow-wrap: break-word; 
+  }
+
+  .titulo-verbete { 
+    font-size: 2.2rem; 
+    margin-bottom: 15px;
+    word-break: break-word;
+  }
+  
+  .meta-info { 
+    margin-bottom: 30px; 
+    font-size: 0.85rem;
+  }
+  
+  .html-markdown { 
+    font-size: 1.15rem; 
+    line-height: 1.6; 
+  }
+  
+  :deep(.html-markdown h2) { 
+    font-size: 1.5rem; 
+    margin-top: 40px; 
+  }
+
+  .card-grafo-fixo {
+    padding: 15px; 
+    box-sizing: border-box;
+  }
+
+  .conteiner-canvas-grafo { 
+    height: 320px; 
+  }
+  
+  .editorial-footer { 
+    padding: 40px 20px; 
+  }
+  
+  .footer-container { 
+    align-items: center; 
+    text-align: center; 
+  }
+  
+  .mini-nav {
+    flex-direction: column;
+    gap: 15px;
+  }
 }
 </style>
