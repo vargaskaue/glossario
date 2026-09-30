@@ -10,7 +10,7 @@
     </header>
 
     <main class="editorial-main" v-if="verbete">
-      <div class="layout-layout-grid">
+      <div class="layout-grid">
         <article class="verbete-leitura">
           <h1 class="titulo-verbete">{{ verbete.titulo }}</h1>
           
@@ -43,7 +43,7 @@
         </div>
         <div class="footer-credits">
           <p class="developer">Desenvolvido por <a href="https://integra.ifsul.edu.br/p/kaue-vargas-sito" target="_blank" rel="noopener" class="integra-link">Kauê Sitó</a></p>
-          <p class="license">Produto licensed sob <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pt-br" target="_blank" rel="noopener">Creative Commons CC BY-NC-SA 4.0</a></p>
+          <p class="license">Produto licenciado sob <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pt-br" target="_blank" rel="noopener">Creative Commons CC BY-NC-SA 4.0</a></p>
         </div>
       </div>
     </footer>
@@ -55,6 +55,7 @@ import { ref, watch, computed, onMounted, nextTick } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { marked } from 'marked'
 import { Network } from 'vis-network/standalone'
+import { parseMarkdown } from '../lib/parseMarkdown'
 
 const route = useRoute()
 const router = useRouter()
@@ -62,51 +63,14 @@ const verbete = ref(null)
 const containerGrafo = ref(null)
 let instanciaNetwork = null
 
-const parseMarkdown = (rawContent, id) => {
-  const meta = { id, titulo: id, autor: 'Desconhecido', referencias: '', conteudo: '', linksRelacionados: [] }
-  
-  if (rawContent.startsWith('---')) {
-    const parts = rawContent.split('---')
-    if (parts.length >= 3) {
-      const yamlLines = parts[1].split('\n')
-      yamlLines.forEach(line => {
-        const separatorIndex = line.indexOf(':')
-        if (separatorIndex !== -1) {
-          const key = line.slice(0, separatorIndex).trim()
-          const value = line.slice(separatorIndex + 1).trim()
-          if (key in meta) meta[key] = value
-        }
-      })
-      const corpo = parts.slice(2).join('---').trim()
-      meta.conteudo = corpo
-
-      // Algoritmo invisível que mapeia os nós do grafo
-      const regexWikiLink = /\[\[(.*?)\]\]/g
-      let match
-      const linksEncontrados = []
-      while ((match = regexWikiLink.exec(corpo)) !== null) {
-        const interno = match[1].split('|')[0].trim()
-        if (interno && !linksEncontrados.includes(interno)) {
-          linksEncontrados.push(interno)
-        }
-      }
-      meta.linksRelacionados = linksEncontrados
-    }
-  } else {
-    meta.conteudo = rawContent.trim()
-  }
-  return meta
-}
+const arquivos = import.meta.glob('../content/*.md', { query: '?raw', eager: true })
 
 const carregarVerbeteLocal = () => {
   const fileId = route.params.id
-  const arquivos = import.meta.glob('../content/*.md', { query: '?raw', eager: true })
   const caminhoAlvo = `../content/${fileId}.md`
 
   if (arquivos[caminhoAlvo]) {
-    // CORRIGIDO AQUI: arquivos com "qu" em vez de "ch"
-    const conteudoBruto = arquivos[caminhoAlvo].default 
-    verbete.value = parseMarkdown(conteudoBruto, fileId)
+    verbete.value = parseMarkdown(arquivos[caminhoAlvo].default, fileId)
   } else {
     verbete.value = {
       titulo: 'Verbete não encontrado',
@@ -220,8 +184,6 @@ onMounted(() => carregarVerbeteLocal())
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap');
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
 
 .editorial-wrapper {
   background-color: #faf9f6;
@@ -229,6 +191,7 @@ onMounted(() => carregarVerbeteLocal())
   display: flex;
   flex-direction: column;
   color: #1c1c1c;
+  overflow-x: hidden;
 }
 
 .header-container {
@@ -281,14 +244,16 @@ onMounted(() => carregarVerbeteLocal())
   margin: 40px auto 80px;
   padding: 0 24px;
   flex: 1;
+  box-sizing: border-box;
 }
 
 /* GRID DO LAYOUT: Duas colunas */
-.layout-layout-grid {
+.layout-grid {
   display: grid;
   grid-template-columns: 1fr 340px;
   gap: 30px;
   align-items: start;
+  min-width: 0;
 }
 
 .verbete-leitura {
@@ -297,6 +262,8 @@ onMounted(() => carregarVerbeteLocal())
   border-radius: 8px;
   border: 1px solid #e8e7e3;
   box-shadow: 0 4px 24px rgba(0,0,0,0.015);
+  min-width: 0;
+  overflow-wrap: break-word;
 }
 
 .titulo-verbete {
@@ -487,80 +454,79 @@ onMounted(() => carregarVerbeteLocal())
   color: #ffffff; 
 }
 
-/* --- REGRAS DE RESPONSIVIDADE BLINDADAS --- */
+/* --- RESPONSIVIDADE --- */
+
+/* Tablet: empilha artigo + grafo */
 @media (max-width: 1100px) {
-  .layout-layout-grid { 
-    display: flex;
-    flex-direction: column;
-    gap: 40px; 
+  .layout-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
   }
-  .sidebar-grafo { 
-    position: static; 
+  .sidebar-grafo {
+    position: static;
     width: 100%;
-  }
-  .verbete-leitura { 
-    width: 100%; 
-    max-width: 100%;
   }
 }
 
-@media (max-width: 640px) {
-  .editorial-main { 
-    padding: 0 15px; 
-    margin: 20px auto 40px; 
-    width: 100%;
-    box-sizing: border-box;
+/* Tablet menor: reduz padding do artigo */
+@media (max-width: 768px) {
+  .editorial-main {
+    padding: 0 16px;
+    margin: 30px auto 60px;
   }
-  
-  .verbete-leitura { 
-    padding: 30px 20px; 
-    width: 100%;
-    box-sizing: border-box; 
-    overflow-wrap: break-word; 
+  .verbete-leitura {
+    padding: 36px 32px;
   }
+  .titulo-verbete {
+    font-size: 2.2rem;
+  }
+}
 
-  .titulo-verbete { 
-    font-size: 2.2rem; 
-    margin-bottom: 15px;
+/* Mobile */
+@media (max-width: 480px) {
+  .editorial-main {
+    padding: 0 12px;
+    margin: 20px auto 40px;
+  }
+  .verbete-leitura {
+    padding: 24px 16px;
+  }
+  .titulo-verbete {
+    font-size: 1.9rem;
     word-break: break-word;
   }
-  
-  .meta-info { 
-    margin-bottom: 30px; 
+  .meta-info {
+    margin-bottom: 24px;
     font-size: 0.85rem;
   }
-  
-  .html-markdown { 
-    font-size: 1.15rem; 
-    line-height: 1.6; 
+  .html-markdown {
+    font-size: 1.05rem;
+    line-height: 1.7;
   }
-  
-  :deep(.html-markdown h2) { 
-    font-size: 1.5rem; 
-    margin-top: 40px; 
+  :deep(.html-markdown h2) {
+    font-size: 1.3rem;
+    margin-top: 32px;
   }
-
+  :deep(.html-markdown h3) {
+    font-size: 1.1rem;
+  }
   .card-grafo-fixo {
-    padding: 15px; 
-    box-sizing: border-box;
+    padding: 14px;
   }
-
-  .conteiner-canvas-grafo { 
-    height: 320px; 
+  .conteiner-canvas-grafo {
+    height: 280px;
   }
-  
-  .editorial-footer { 
-    padding: 40px 20px; 
-  }
-  
-  .footer-container { 
-    align-items: center; 
-    text-align: center; 
-  }
-  
   .mini-nav {
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .editorial-footer {
+    padding: 30px 16px;
+  }
+  .footer-container {
+    align-items: center;
+    text-align: center;
   }
 }
 </style>

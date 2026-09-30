@@ -1,0 +1,14 @@
+- **Conteúdo:** o documento tem 34 conceitos e o site tem 28.
+  - Faltam no site 8 verbetes: Teoria do Caos, LA INdisciplinar, Sujeito–Objeto–Interação, Conhecimento e Linguagem, Ecologia da Ação, Multiletramentos, Transletramento e Transmídia.
+  - Só o site tem "Reversibilidade".
+  - "Não-linearidade" aparece duas vezes no site.
+  - Alguns títulos não batem com o documento.
+  - O site não tem a divisão em quatro blocos.
+- **Grafo:** a rede é centralizada. De 64 links, cerca de 25 vão para "SAC" e 22 para "complexidade". Fica em aberto se vocês analisam a rede como está antes de acrescentar ligações.
+- **Repositório:** o README ainda é o modelo do Vite, falta licença e o `supabaseClient.js` não é usado. Depois de sincronizar, vale criar uma versão citável com DOI pelo Zenodo.
+- **Referências do documento:**
+  - Leffa 2006 e 2016 estão trocados em dois verbetes.
+  - Gosciola aparece como 2019 no texto e 2012 na lista.
+  - Paiva & Nascimento (2009) está citado, mas não aparece nas referências.
+  - Larsen-Freeman & Cameron (2008) está nas referências, mas não é citado em nenhum verbete.
+  - Rzevski está incompleto.

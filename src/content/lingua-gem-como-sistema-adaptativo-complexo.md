@@ -2,7 +2,6 @@
 titulo: Língua(gem) como Sistema Adaptativo Complexo (SAC)
 autor: SITÓ, Kauê; VIRAGO, Carine; ROSA, Ana Paula; PEREIRA, Daniela
 resumo: Perspectiva que compreende a comunicação como um ecossistema aberto, dinâmico e amalgado que engloba múltiplos modos semióticos e práticas sociais situadas.
-
 ---
 
 # língua(gem) como sistema adaptativo complexo
@@ -13,10 +12,10 @@ Esta abordagem surge como uma crítica e expansão do modelo tradicional de lín
 
 ## Referências Bibliográficas
 
-PAIVA, Vera Lúcia Menezes de Oliveira e. Língua(gem) como sistema complexo e multimodalidade. Scripta, v. 23, n. 49, p. 15-32, 2019.
+PAIVA, Vera Lúcia Menezes de Oliveira e. Língua(gem) como sistema complexo e multimodalidade. *Scripta*, v. 23, n. 49, p. 15-32, 2019.
 
-PAIVA, Vera Lúcia Menezes de Oliveira e. AULA DE LÍNGUA ESTRANGEIRA COMO UM SISTEMA ADAPTATIVO COMPLEXO. Revista Brasileira de Linguística Aplicada, v. 5, n. 1, p. 111-131, 2005.
+PAIVA, Vera Lúcia Menezes de Oliveira e. Aula de língua estrangeira como um sistema adaptativo complexo. *Revista Brasileira de Linguística Aplicada*, v. 5, n. 1, p. 111-131, 2005.
 
 ## Conteúdos Relacionados
 
-[[sistema adaptativo complexo]] [[complexidade]]
+[[sistema-adaptativo-complexo]] [[complexidade]] [[lingua-como-sistema-adaptativo-complexo-sac]]

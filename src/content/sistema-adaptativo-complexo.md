@@ -2,10 +2,9 @@
 titulo: Sistema Adaptativo Complexo (SAC)
 autor: SITÓ, Kauê; VIRAGO, Carine; ROSA, Ana Paula; PEREIRA, Daniela
 resumo: Arranjos dinâmicos de múltiplos agentes que interagem de forma não-linear, gerando propriedades emergentes, coadaptação e auto-organização.
-
 ---
 
-# sistema adaptativo complexo
+# sistema adaptativo complexo (sac)
 
 Rede dinâmica de múltiplos elementos ou agentes que interagem entre si de maneira não-linear e que, simultaneamente, atuam e reagem aos comportamentos uns dos outros. Ao contrário de sistemas mecânicos ou fechados, caracteriza-se por sua capacidade de aprender, evoluir e se auto-organizar em resposta às restrições, feedbacks e perturbações do ambiente.
 
@@ -15,12 +14,12 @@ O mapeamento dos fenômenos sociais e linguísticos sob essa lente redefine o de
 
 ## Referências Bibliográficas
 
-LARSEN-FREEMAN, Diane; CAMERON, Lynne. Complex systems and applied linguistics. Oxford: Oxford University Press, 2008.
+DUQUE, Paulo Henrique. A emergência do comportamento linguístico. *ReVEL*, v. 14, n. 27, 2016.
 
-LEFFA, Vilson José. Ensinando a língua como um sistema adaptativo complexo. ReVEL, v. 14, n. 27, 2016.
+LEFFA, Vilson José. Transdisciplinaridade no ensino de línguas: a perspectiva das teorias da complexidade e do caos. *Revista Brasileira de Linguística Aplicada*, v. 6, n. 1, p. 27-49, 2006.
 
-PAIVA, Vera Lúcia Menezes de Oliveira e. AULA DE LÍNGUA ESTRANGEIRA COMO UM SISTEMA ADAPTATIVO COMPLEXO. Revista Brasileira de Linguística Aplicada, v. 5, n. 1, p. 111-131, 2005.
+PAIVA, Vera Lúcia Menezes de Oliveira e. Aula de língua estrangeira como um sistema adaptativo complexo. *Revista Brasileira de Linguística Aplicada*, v. 5, n. 1, p. 111-131, 2005.
 
 ## Conteúdos Relacionados
 
-[[complexidade]] [[língua(gem) como sistema adaptativo complexo]] [[coadaptação (sac)]] [[agência distribuída]] [[aprendizagem ergódica]]
+[[complexidade]] [[lingua-gem-como-sistema-adaptativo-complexo]] [[coadaptacao-sac]] [[agencia-distribuida]] [[aprendizagem-ergodica]]

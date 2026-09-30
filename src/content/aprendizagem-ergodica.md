@@ -2,7 +2,6 @@
 titulo: Aprendizagem Ergódica
 autor: SITÓ, Kauê; VIRAGO, Carine; ROSA, Ana Paula; PEREIRA, Daniela
 resumo: Abordagem pedagógica mediada por tecnologias digitais em que a construção do conhecimento exige do estudante um esforço físico e cognitivo não-trivial.
-
 ---
 
 # aprendizagem ergódica
@@ -15,10 +14,10 @@ O conceito foi adaptado para o campo da educação por Vilson J. Leffa e André 
 
 ## Referências Bibliográficas
 
-AARSETH, Espen J. Cybertext: perspectives on ergodic literature. Baltimore: Johns Hopkins University Press, 1997.
+AARSETH, Espen J. *Cybertext: perspectives on ergodic literature*. Baltimore: Johns Hopkins University Press, 1997.
 
-LEFFA, Vilson José; BEVILÁQUA, André Firpo. Aprendizagem ergódica: a busca do hipertexto responsivo no ensino de línguas. ReVEL, v. 14, n. 27, 2016.
+LEFFA, Vilson José; BEVILÁQUA, André Firpo. Aprendizagem ergódica: a busca do hipertexto responsivo no ensino de línguas. *ReVEL*, v. 14, n. 27, 2016.
 
 ## Conteúdos Relacionados
 
-[[hipertexto]] [[agência distribuída]] [[sistema adaptativo complexo]]
+[[hipertexto]] [[agencia-distribuida]] [[sistema-adaptativo-complexo]]

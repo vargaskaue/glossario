@@ -2,7 +2,6 @@
 titulo: Hipertexto na Perspectiva Complexa
 autor: SITÓ, Kauê; VIRAGO, Carine; ROSA, Ana Paula; PEREIRA, Daniela
 resumo: Mecanismo cognitivo, enunciativo e tecnológico de organização textual caracterizado por uma estrutura não-linear, multidimensional e fragmentada.
-
 ---
 
 # hipertexto
@@ -15,12 +14,12 @@ Evolui de um modelo estático (links fixos predefinidos pelo autor) para o Hiper
 
 ## Referências Bibliográficas
 
-LEFFA, Vilson José; BEVILÁQUA, André Firpo. Aprendizagem ergódica: a busca do hipertexto responsivo no ensino de línguas. ReVEL, v. 14, n. 27, 2016.
+LEFFA, Vilson José; BEVILÁQUA, André Firpo. Aprendizagem ergódica: a busca do hipertexto responsivo no ensino de línguas. *ReVEL*, v. 14, n. 27, 2016.
 
-LEFFA, Vilson J.; VETROMILLE-CASTRO, Rafael. Texto, hipertexto e interatividade. Rio de Janeiro: Bem Te Vi, 2010.
+LEFFA, Vilson J.; VETROMILLE-CASTRO, Rafael. *Texto, hipertexto e interatividade*. Rio de Janeiro: Bem Te Vi, 2010.
 
-PAIVA, Vera Lúcia Menezes de Oliveira e; NASCIMENTO, Milton do. Hipertexto e complexidade. In: PAIVA, V. L. M. O. (Org.). Práticas de linguagem mediadas por computador. Belo Horizonte: FALE/UFMG, 2002.
+PAIVA, Vera Lúcia Menezes de Oliveira e; NASCIMENTO, Milton do. Hipertexto e complexidade. In: PAIVA, V. L. M. O. (Org.). *Práticas de linguagem mediadas por computador*. Belo Horizonte: FALE/UFMG, 2002.
 
 ## Conteúdos Relacionados
 
-[[complexidade]] [[sistema adaptativo complexo]] [[aprendizagem ergódica]]
+[[complexidade]] [[sistema-adaptativo-complexo]] [[aprendizagem-ergodica]]

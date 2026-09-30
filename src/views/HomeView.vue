@@ -112,38 +112,12 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
+import { parseMarkdown } from '../lib/parseMarkdown'
 
 const busca = ref('')
 const letraAtiva = ref('')
 const alfabeto = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
 const verbetes = ref([])
-
-// Processador simples para extrair metadados do YAML (Frontmatter) do Markdown
-const parseMarkdown = (rawContent, filename) => {
-  const id = filename.replace(/^.*[\\/]/, '').replace('.md', '')
-  const meta = { id, titulo: id, autor: 'Desconhecido', resumo: '', conteudo: '', referencias: '' }
-  
-  // Verifica se o arquivo tem o bloco de cabeçalho ---
-  if (rawContent.startsWith('---')) {
-    const parts = rawContent.split('---')
-    if (parts.length >= 3) {
-      const yamlLines = parts[1].split('\n')
-      yamlLines.forEach(line => {
-        const separatorIndex = line.indexOf(':')
-        if (separatorIndex !== -1) {
-          const key = line.slice(0, separatorIndex).trim()
-          const value = line.slice(separatorIndex + 1).trim()
-          if (key in meta) meta[key] = value
-        }
-      })
-      // O resto do arquivo é o corpo do texto e as referências
-      meta.conteudo = parts.slice(2).join('---').trim()
-    }
-  } else {
-    meta.conteudo = rawContent.trim()
-  }
-  return meta
-}
 
 const carregarVerbetesLocais = () => {
   // O Vite mapeia todos os arquivos .md da pasta content como texto puro automaticamente
@@ -152,7 +126,8 @@ const carregarVerbetesLocais = () => {
 
   for (const caminho in arquivos) {
     const conteudoBruto = arquivos[caminho].default
-    const verbeteFormatado = parseMarkdown(conteudoBruto, caminho)
+    const id = caminho.replace(/^.*[\\/]/, '').replace('.md', '')
+    const verbeteFormatado = parseMarkdown(conteudoBruto, id)
     listaProcessada.push(verbeteFormatado)
   }
 
@@ -199,8 +174,6 @@ onMounted(() => {
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap');
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
 
 .editorial-wrapper {
   background-color: #faf9f6;

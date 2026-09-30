@@ -2,7 +2,6 @@
 titulo: Agência Distribuída
 autor: SITÓ, Kauê; VIRAGO, Carine; ROSA, Ana Paula; PEREIRA, Daniela
 resumo: Perspectiva sociotécnica e pós-humana que argumenta que a capacidade de agir e produzir sentido está compartilhada por uma rede híbrida de actantes humanos e não-humanos.
-
 ---
 
 # agência distribuída
@@ -15,10 +14,10 @@ Esse conceito serve de base estrutural para o que se denomina "Linguística Apli
 
 ## Referências Bibliográficas
 
-LEFFA, Vilson José; BEVILÁQUA, André Firpo. Aprendizagem ergódica: a busca do hipertexto responsivo no ensino de línguas. ReVEL, v. 14, n. 27, 2016.
+LEFFA, Vilson José; BEVILÁQUA, André Firpo. Aprendizagem ergódica: a busca do hipertexto responsivo no ensino de línguas. *ReVEL*, v. 14, n. 27, 2016.
 
-LEFFA, Vilson J.; ALVES, Carolina Fernandes; FONTANA, Marcus Vinícius Liessem. Humanismo, pós-humanismo e pós-estruturalismo nas tecnologias educacionais. Calidoscópio, v. 18, n. 1, p. 111-127, 2020.
+LEFFA, Vilson J.; ALVES, Carolina Fernandes; FONTANA, Marcus Vinícius Liessem. Humanismo, pós-humanismo e pós-estruturalismo nas tecnologias educacionais. *Calidoscópio*, v. 18, n. 1, p. 111-127, 2020.
 
 ## Conteúdos Relacionados
 
-[[aprendizagem ergódica]] [[sistema adaptativo complexo]]
+[[aprendizagem-ergodica]] [[sistema-adaptativo-complexo]]
