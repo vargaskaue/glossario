@@ -94,7 +94,7 @@ Atratores são regiões ou modos de comportamento para os quais um sistema dinâ
 
 ## Referências Bibliográficas
 
-LEFFA, Vilson José. Ensinando a língua como um sistema adaptativo complexo. *ReVEL*, v. 14, n. 27, 2016.
+LEFFA, Vilson José. Transdisciplinaridade no ensino de línguas: a perspectiva das teorias da complexidade e do caos. *Revista Brasileira de Linguística Aplicada*, v. 6, n. 1, p. 27-49, 2006.
 
 BORGES, Elaine; PAIVA, Vera Lúcia. Por uma abordagem complexa de ensino de línguas. *Revista Linguagem & Ensino*, v. 14, n. 2, p. 337-356, 2019.
 
@@ -428,9 +428,9 @@ A língua e o seu ensino funcionam como ecossistemas abertos, dinâmicos e impre
 
 ## Referências Bibliográficas
 
-LEFFA, Vilson José. Ensinando a língua como um sistema adaptativo complexo. *ReVEL*, v. 14, n. 27, 2016.
+LEFFA, Vilson José. Transdisciplinaridade no ensino de línguas: a perspectiva das teorias da complexidade e do caos. *Revista Brasileira de Linguística Aplicada*, v. 6, n. 1, p. 27-49, 2006.
 
-PAIVA, Vera Lúcia Menezes de Oliveira e; NASCIMENTO, Milton do. Hipertexto e complexidade. *Linguagem em (Dis)curso*, v. 9, n. 3, p. 519-547, 2009.
+PAIVA, Vera Lúcia Menezes de Oliveira e; NASCIMENTO, Milton do. Hipertexto e complexidade. In: PAIVA, V. L. M. O. (Org.). *Práticas de linguagem mediadas por computador*. Belo Horizonte: FALE/UFMG, 2002.
 
 ## Conteúdos Relacionados
 
@@ -596,9 +596,9 @@ O mapeamento dos fenômenos sociais e linguísticos sob essa lente redefine o de
 
 ## Referências Bibliográficas
 
-LARSEN-FREEMAN, Diane; CAMERON, Lynne. *Complex systems and applied linguistics*. Oxford: Oxford University Press, 2008.
+DUQUE, Paulo Henrique. A emergência do comportamento linguístico. *ReVEL*, v. 14, n. 27, 2016.
 
-LEFFA, Vilson José. Ensinando a língua como um sistema adaptativo complexo. *ReVEL*, v. 14, n. 27, 2016.
+LEFFA, Vilson José. Transdisciplinaridade no ensino de línguas: a perspectiva das teorias da complexidade e do caos. *Revista Brasileira de Linguística Aplicada*, v. 6, n. 1, p. 27-49, 2006.
 
 PAIVA, Vera Lúcia Menezes de Oliveira e. Aula de língua estrangeira como um sistema adaptativo complexo. *Revista Brasileira de Linguística Aplicada*, v. 5, n. 1, p. 111-131, 2005.
 
@@ -707,7 +707,7 @@ resumo: Conteúdo diverso, mas relacionado, expandido em múltiplos canais de m�
 
 # transmídia / ecossistema transmídia
 
-Termo que vem da Comunicação e Publicidade e que, segundo autores da área, revela uma "reação ao unilateral, ao monomidiático, à hegemonia de uma plataforma em detrimento de outras" (Gosciola, 2019, p. 39), o que se complementa ao contemplar conteúdo diverso, mas relacionado, expandido em múltiplos canais de mídia, de tal forma que estabelece confluência de significado de um canal para outro (Jenkins, 2006). Dentro da Linguística Aplicada, a produção e a compreensão textual transmídia permite vislumbrar transversalmente um fluxo de informações explorando as transformações geradas entre múltiplas mídias e, assim, construir significados. (Freire, 2021)
+Termo que vem da Comunicação e Publicidade e que, segundo autores da área, revela uma "reação ao unilateral, ao monomidiático, à hegemonia de uma plataforma em detrimento de outras" (Gosciola, 2012, p. 39), o que se complementa ao contemplar conteúdo diverso, mas relacionado, expandido em múltiplos canais de mídia, de tal forma que estabelece confluência de significado de um canal para outro (Jenkins, 2006). Dentro da Linguística Aplicada, a produção e a compreensão textual transmídia permite vislumbrar transversalmente um fluxo de informações explorando as transformações geradas entre múltiplas mídias e, assim, construir significados. (Freire, 2021)
 
 Considerando o transletramento, existem nesse ecossistema vetores originais e relevantes como a convergência, a expansão, a conexão transversal, a participação e as múltiplas plataformas de mídia que devem ser considerados na procura de uma "direção e suporte seguros para a (re-)definição dos processos de produção e compreensão textual" (Freire, 2021, p. 14).
 
