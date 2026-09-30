@@ -1,0 +1,35 @@
+{
+  "title": "Glossário — Concepções de Língua e Texto",
+  "description": "Glossário hipertextual com visualização em grafo, desenvolvido como produto final da disciplina PPGLET899 do Programa de Pós-Graduação em Letras da Universidade Federal de Santa Maria (UFSM). Os verbetes, escritos em markdown e interligados por wikilinks, abordam diferentes concepções de língua e texto. Versão navegável: https://vargaskaue.github.io/glossario/",
+  "upload_type": "software",
+  "license": "cc-by-nc-sa-4.0",
+  "language": "por",
+  "keywords": [
+    "Linguística Aplicada",
+    "Concepções de língua",
+    "Complexidade",
+    "Hipertexto",
+    "Recurso Educacional Aberto",
+    "Glossário"
+  ],
+  "creators": [
+    {"name": "Sitó, Kauê", "affiliation": "Universidade Federal de Santa Maria; Instituto Federal Sul-rio-grandense", "orcid": "0009-0003-0812-5908"},
+    {"name": "Virago, Carine", "affiliation": "Universidade Federal de Santa Maria"},
+    {"name": "Rosa, Ana Paula da", "affiliation": "Universidade Federal de Santa Maria"},
+    {"name": "Pereira, Daniela", "affiliation": "Universidade Federal de Santa Maria"},
+    {"name": "Martinho, Lairy", "affiliation": "Universidade Federal de Santa Maria"},
+    {"name": "Oliveira, Anna", "affiliation": "Universidade Federal de Santa Maria"},
+    {"name": "Silva, Mônica", "affiliation": "Universidade Federal de Santa Maria"},
+    {"name": "Telöken, Luiza", "affiliation": "Universidade Federal de Santa Maria"},
+    {"name": "Timbane, Margarida", "affiliation": "Universidade Federal de Santa Maria"},
+    {"name": "Viera, Rafaella", "affiliation": "Universidade Federal de Santa Maria"}
+  ],
+  "contributors": [
+    {"name": "Fialho, Vanessa Ribas", "affiliation": "Universidade Federal de Santa Maria", "orcid": "0000-0002-4512-4256", "type": "Supervisor"},
+    {"name": "Sturza, Eliana", "affiliation": "Universidade Federal de Santa Maria", "orcid": "0000-0003-4085-0096", "type": "Supervisor"},
+    {"name": "Costa, Evellyne Patrícia Figueiredo de Sousa", "affiliation": "Universidade Federal de Santa Maria", "orcid": "0000-0002-2805-6095", "type": "Supervisor"}
+  ],
+  "related_identifiers": [
+    {"identifier": "https://vargaskaue.github.io/glossario/", "relation": "isSupplementedBy", "scheme": "url"}
+  ]
+}
