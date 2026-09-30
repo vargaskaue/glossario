@@ -191,4 +191,7 @@ Copie o conteúdo da pasta `dist/` para o diretório público do servidor (geral
 
 ## Licença
 
-Conteúdo licenciado sob [Creative Commons CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pt-br).
+Este repositório usa licença dupla:
+
+- **Código-fonte** (Vue, Vite, JS/CSS): [MIT](https://opensource.org/licenses/MIT) — pode ser reutilizado e adaptado livremente, inclusive para hospedar outros glossários.
+- **Conteúdo dos verbetes** (`src/content/*.md`): [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pt-br) — uso e adaptação permitidos com atribuição, sem fins comerciais, e sob a mesma licença.
